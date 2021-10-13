@@ -40,7 +40,7 @@
         z-index: 25;
     }
     .btn4 {
-        margin-top: 0.5rem;
+        margin-top: 0.5rem !important;
     }
     .delbtn {
         margin-left: 0.5rem !important;
