@@ -10,11 +10,17 @@ btn1.addEventListener('click', function (e) {
     else {
         notesarray = JSON.parse(notes);
     }
-    notesarray.push(input.value);
-    input.value = "";
-    localStorage.setItem('notes', JSON.stringify(notesarray));
-    console.log(notesarray);
-    shownotes();
+    //code to not permit people to add empty notes
+    if (input.value == null || input.value == "") {
+    }
+    else {
+
+      notesarray.push(input.value);
+      input.value = "";
+      localStorage.setItem('notes', JSON.stringify(notesarray));
+      console.log(notesarray);
+      shownotes();
+    }
 })
 //function to show notes
 function shownotes() {
@@ -31,11 +37,12 @@ function shownotes() {
     notesarray.forEach( function (element, index) {
         
             html += `
-            <div class="cardnotes my-4 mx-2 border border-dark" style="width: 18rem;">
+            <div class="cardnotes my-4 mx-2 border border-dark" style="width: 24rem;">
         <div class="card-body">
           <h5 class="card-title"> Note ${index + 1} </h5>
           <p class="card-text"> ${element} </p>
           <button  id="${index}" onclick="deletenote(this.id)" class="btn btn-primary">Delete Note</button>
+          <button  id="${index}" onclick="editnote(this.id)" class="btn btn-primary mx-4.5">Edit Note</button>
         </div> 
       </div>
             `
@@ -100,8 +107,32 @@ console.log(cardtxt);
     }
   })
 })
+// function to delete all notes
+let deleteallnotes = document.getElementById("btn4");
+deleteallnotes.addEventListener('click', function (e){
+  let notes = localStorage.getItem('notes');
+  if (notes == null) {
+      notesarray = [];
+  }
+  else {
+      notesarray = JSON.parse(notes);
+  }
+  notesarray.splice(0, notesarray.length);
+  localStorage.setItem("notes", JSON.stringify(notesarray));
+  shownotes();
+})
 
+//function to edit note
+function editnote (index) {
+  let notes = localStorage.getItem('notes');
+  if (notes == null) {
+      notesarray = [];
+  }
+  else {
+      notesarray = JSON.parse(notes);
+  }
 
+ input.value = notesarray[index];
+ deletenote(index);
+}
  
-
-
