@@ -1,0 +1,43 @@
+@media screen and (max-width: 800px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      position: static;
+      margin: 0px;
+      z-index: 20;
+
+    }
+
+    #notesEle {
+      background-color: white;
+      transform: translateY(48vh);
+      z-index: 0; 
+      padding: 4px;
+      width: 100%;
+      z-index: 0;
+      
+
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      
+    }
+    
+  }
+
+  #notesEle {
+    float: right;
+    width: 70vw;
+    z-index: 11;
+  }
+  .container {
+    position: fixed;
+    z-index: 10;
+    max-width: 430px;
+  }
+  .navbar {
+      position: sticky;
+  }
